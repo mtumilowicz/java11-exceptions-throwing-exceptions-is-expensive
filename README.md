@@ -3,6 +3,7 @@
 * https://stackoverflow.com/questions/36343209/which-part-of-throwing-an-exception-is-expensive
 * https://shipilev.net/blog/2014/exceptional-performance/
 * http://java-performance.info/throwing-an-exception-in-java-is-very-slow/
+* https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Exception.html
 
 # preface
 * https://github.com/mtumilowicz/java-stack
@@ -39,5 +40,73 @@
     * records information about the current state of
       the stack frames for the current thread
     * `UNASSIGNED_STACK` - a shared value for an empty stack
-
+* usually we need only couple of lines (if any at all)
+* we can customize exceptions not to fill stacktrace using constructor
+    ```
+    protected Exception(String message, Throwable cause,
+                        boolean enableSuppression,
+                        boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+    ```
+    ```
+    protected RuntimeException(String message, Throwable cause,
+                               boolean enableSuppression,
+                               boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+    ```
 # project description
+* we will show that creating exception without stacktrace is much faster than with stacktrace
+* we will use JMH: 
+    ```
+    jmh {
+        warmupIterations = 2
+        iterations = 2
+        fork = 2
+    }
+    ```
+* classes
+    * `ExceptionWithoutStackTrace`
+        ```
+        class ExceptionWithoutStackTrace extends Exception {
+            ExceptionWithoutStackTrace(String message) {
+                super(message, null, false, false);
+            }
+        }
+        ```
+    * `ExceptionWithStackTrace`
+        ```
+        class ExceptionWithStackTrace extends Exception {
+            ExceptionWithStackTrace(String message) {
+                super(message, null, false, true);
+            }
+        }
+        ```
+    * `Jmh`
+        ```
+        public class Jmh {
+            
+            @Benchmark
+            public void runtimeException(Blackhole blackhole) {
+                blackhole.consume(new RuntimeException("aaa"));
+            }
+        
+            @Benchmark
+            public void exceptionWithoutStackTrace(Blackhole blackhole) {
+                blackhole.consume(new ExceptionWithoutStackTrace("aaa"));
+            }
+        
+            @Benchmark
+            public void exceptionWithStackTrace(Blackhole blackhole) {
+                blackhole.consume(new ExceptionWithStackTrace("aaa"));
+            }
+        }
+        ```
+* jmh report (on my PC)
+    ```
+    Benchmark                        Mode  Cnt         Score          Error  Units
+    Jmh.exceptionWithStackTrace     thrpt    4    657794,785 ±    48723,978  ops/s
+    Jmh.exceptionWithoutStackTrace  thrpt    4  68883171,304 ± 19209621,332  ops/s
+    Jmh.runtimeException            thrpt    4    600517,626 ±   686481,438  ops/s
+    ```
