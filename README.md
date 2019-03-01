@@ -3,6 +3,8 @@
 * https://stackoverflow.com/questions/36343209/which-part-of-throwing-an-exception-is-expensive
 * https://shipilev.net/blog/2014/exceptional-performance/
 * https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Exception.html
+* https://stackoverflow.com/a/2332865
+* http://underpop.online.fr/j/java/how-to-code-java/ch13lev1sec8.html
 
 # preface
 * https://github.com/mtumilowicz/java-stack
