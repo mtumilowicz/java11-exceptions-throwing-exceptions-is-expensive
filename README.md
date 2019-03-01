@@ -59,7 +59,7 @@
     ```
 # project description
 * we will show that creating exception without stacktrace is much faster than with stacktrace
-* we will use JMH: 
+* we will use JMH (https://github.com/mtumilowicz/java-microbenchmarking-jmh): 
     ```
     jmh {
         warmupIterations = 2
