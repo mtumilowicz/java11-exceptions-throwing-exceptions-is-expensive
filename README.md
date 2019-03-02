@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-throwing-exceptions-is-expensive.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-throwing-exceptions-is-expensive)
+
 # java11-throwing-exceptions-is-expensive
 
 * https://stackoverflow.com/questions/36343209/which-part-of-throwing-an-exception-is-expensive
