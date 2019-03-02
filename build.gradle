@@ -3,7 +3,7 @@ plugins {
     id "me.champeau.gradle.jmh" version "0.4.8"
 }
 
-group 'java11-throwing-exceptions-is-expensive'
+group 'java11-exceptions-throwing-exceptions-is-expensive'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 11
