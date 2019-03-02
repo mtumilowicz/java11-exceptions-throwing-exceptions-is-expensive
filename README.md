@@ -46,7 +46,7 @@
 function call and the subsequent popping of the stack)
     1. unwinding the method-call stack means that the method in which the exception was not caught terminates, 
     all local variables in that method go out of scope and control returns to the statement that originally 
-    invoked that method. 
+    invoked that method
     1. if a try block encloses that statement, an attempt is made to catch the exception 
     1. if a try block does not enclose that statement, stack unwinding occurs again
 * throwing exception cost = cost of creating exception (non-deterministic - depends on the actual stack size) + 
