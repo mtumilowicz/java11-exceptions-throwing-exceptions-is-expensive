@@ -49,6 +49,8 @@ function call and the subsequent popping of the stack)
     invoked that method. 
     1. if a try block encloses that statement, an attempt is made to catch the exception 
     1. if a try block does not enclose that statement, stack unwinding occurs again
+* throwing exception cost = cost of creating exception (non-deterministic - depends on the actual stack size) + 
+cost of stack unwindling
 * usually we need only couple of lines (if any at all)
 * we can customize exceptions not to fill stacktrace using constructor
     ```
