@@ -42,6 +42,13 @@
     * records information about the current state of
       the stack frames for the current thread
     * `UNASSIGNED_STACK` - a shared value for an empty stack
+* **stack unwinding** - process of destroying local objects and calling destructors (synonymous with the end of a 
+function call and the subsequent popping of the stack)
+    1. unwinding the method-call stack means that the method in which the exception was not caught terminates, 
+    all local variables in that method go out of scope and control returns to the statement that originally 
+    invoked that method. 
+    1. if a try block encloses that statement, an attempt is made to catch the exception 
+    1. if a try block does not enclose that statement, stack unwinding occurs again
 * usually we need only couple of lines (if any at all)
 * we can customize exceptions not to fill stacktrace using constructor
     ```
