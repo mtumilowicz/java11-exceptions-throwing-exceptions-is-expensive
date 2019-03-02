@@ -12,7 +12,7 @@
 * https://github.com/mtumilowicz/java-stack
     * https://github.com/mtumilowicz/java8-stack-stackwalking
     * https://github.com/mtumilowicz/java9-stack-stackwalking
-* https://github.com/mtumilowicz/java11-throwing-exceptions-without-stacktrace
+* https://github.com/mtumilowicz/java11-creating-exceptions-without-stacktrace
 * creating an exception is much more expensive than creating other objects
     * `Exception extends Throwable`
     * `Exception's` constructor
