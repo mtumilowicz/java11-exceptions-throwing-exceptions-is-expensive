@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/mtumilowicz/java11-throwing-exceptions-is-expensive.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-throwing-exceptions-is-expensive)
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-exceptions-throwing-exceptions-is-expensive.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-exceptions-throwing-exceptions-is-expensive)
 
 # java11-exceptions-throwing-exceptions-is-expensive
 
